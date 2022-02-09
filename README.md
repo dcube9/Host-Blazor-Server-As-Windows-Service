@@ -19,3 +19,5 @@ Hosting a Blazor Server as a Windows Service
 ## Note
 Service is installed in ***manual start*** so you need start it !
 
+## Code Reviewers and Contributors
+@andreatosato
