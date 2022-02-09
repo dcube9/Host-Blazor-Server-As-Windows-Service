@@ -4,6 +4,10 @@ Demo project to hosting a Blazor Server as a Windows Service
 ## Tools
 * Visual Studio 2022
 * DotNet 6
+* NSSM - the Non-Sucking Service Manager
+  - [NSSM](https://nssm.cc) 
+  - [Source](https://git.nssm.cc/nssm/nssm)
+  - Licence : NSSM is public domain. You may unconditionally use it and/or its source code for any purpose you wish.
 
 ## Build and Run
 * Build solutions
