@@ -1,17 +1,15 @@
 global using WeatherForecast.Data;
 global using WeatherForecast.Services;
 global using WeatherForecast.Workers;
+using Microsoft.EntityFrameworkCore;
 using WeatherForecast.Brokers;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add BackgroundService to the host.
-builder.Host.UseWindowsService()
-    .ConfigureServices((hostContext, services) =>
-    {
-        services.AddHostedService<Worker>();
-    })
-    ;
+builder.Host.UseWindowsService();
+
+builder.Services.AddHostedService<Worker>();
 
 builder.WebHost.UseUrls("http://localhost:5555", "http://0.0.0.0:5555");
 
@@ -19,7 +17,9 @@ builder.WebHost.UseUrls("http://localhost:5555", "http://0.0.0.0:5555");
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 //
-builder.Services.AddDbContextFactory<WeatherForecastDbContext>();
+builder.Services.AddDbContextFactory<WeatherForecastDbContext>(options =>
+    options.UseInMemoryDatabase("WeatherForecastDataBase"));
+
 builder.Services.AddTransient<IWeatherForecastService, WeatherForecastService>();
 
 var app = builder.Build();

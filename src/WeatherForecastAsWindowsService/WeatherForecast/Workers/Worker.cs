@@ -27,7 +27,7 @@ public class Worker : BackgroundService
             {
                 var quanti = await context.WeatherForecasts.CountAsync();
 
-                if (quanti <= 100)
+                if (quanti < 100)
                 {
                     await context.WeatherForecasts.AddAsync(WeatherForecastDbContextSeedData.GenerateRandomWeatherForecast(DateTime.Now, 0));
                     await context.SaveChangesAsync();
