@@ -1,0 +1,52 @@
+﻿@page "/fetchdata"
+
+<PageTitle>Weather forecast</PageTitle>
+
+@using WeatherForecast.Entities
+@using WeatherForecast.Services
+@inject IWeatherForecastService ForecastService
+
+<h1>Weather forecast records</h1>
+
+<p>This component demonstrates fetching data from a service.</p>
+<p>Refresh page to list new records.</p>
+
+@if (forecasts == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Ident</th>
+                <th>Date</th>
+                <th>Temp. (C)</th>
+                <th>Temp. (F)</th>
+                <th>Summary</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var forecast in forecasts)
+            {
+                <tr>
+                    <td>@forecast.Id</td>
+                    <td>@forecast.Date.ToString("yyyy/MM/dd hh:mm:ss")</td>
+                    <td>@forecast.TemperatureC</td>
+                    <td>@forecast.TemperatureF</td>
+                    <td>@forecast.Summary</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private IEnumerable<WeatherForecast> forecasts = null;
+
+    protected override async Task OnInitializedAsync()
+    {
+        forecasts = await ForecastService.GetAllWeatherForecasts();
+    }
+}
