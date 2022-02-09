@@ -17,5 +17,5 @@ Hosting a Blazor Server as a Windows Service
 * StopService.bat to stop service
 
 ## Note
-Service is install in ***manual start*** so you need start it !
+Service is installed in ***manual start*** so you need start it !
 
