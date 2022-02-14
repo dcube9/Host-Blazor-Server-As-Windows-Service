@@ -4,7 +4,7 @@ using WeatherForecast.Entities;
 
 public interface IWeatherForecastService
 {
-    public List<WeatherForecast> WeatherForecasts { get; }
+    List<WeatherForecast> WeatherForecasts { get; }
 
     Task GetAllWeatherForecasts();
 
