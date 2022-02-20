@@ -3,7 +3,7 @@ Demo project to hosting a Blazor Server as a Windows Service
 
 ## Tools
 * Visual Studio 2022
-* DotNet 6
+* [.NET 6.0](https://dotnet.microsoft.com/download/dotnet/6.0) for v6.x.x
 * NSSM - the Non-Sucking Service Manager
   - [NSSM](https://nssm.cc) 
   - [Source](https://git.nssm.cc/nssm/nssm)
