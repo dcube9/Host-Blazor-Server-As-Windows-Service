@@ -6,7 +6,6 @@ using WeatherForecast.Brokers;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add BackgroundService to the host.
 builder.Host.UseWindowsService();
 
 builder.Services.AddHostedService<Worker>();
@@ -16,7 +15,7 @@ builder.WebHost.UseUrls("http://localhost:5555", "http://0.0.0.0:5555");
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
-//
+
 builder.Services.AddDbContextFactory<WeatherForecastDbContext>(options =>
     options.UseInMemoryDatabase("WeatherForecastDataBase"));
 

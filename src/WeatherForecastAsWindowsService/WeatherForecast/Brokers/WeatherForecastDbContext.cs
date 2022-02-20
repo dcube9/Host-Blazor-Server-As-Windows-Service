@@ -10,6 +10,7 @@ public class WeatherForecastDbContext : DbContext
     {
         this.EnsureSeedData(); // Initial Seed
     }
+ 
     public DbSet<WeatherForecast> WeatherForecasts { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
