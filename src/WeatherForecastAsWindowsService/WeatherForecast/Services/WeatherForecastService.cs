@@ -15,10 +15,12 @@ public class WeatherForecastService : IWeatherForecastService
         this.weatherForecastcontextFactory = dbContextFactory;
     }
 
-    public async Task<IEnumerable<WeatherForecast>> GetAllWeatherForecasts()
+    public List<WeatherForecast> WeatherForecasts { get; private set; }
+
+    public async Task GetAllWeatherForecasts()
     {
         using var context = weatherForecastcontextFactory.CreateDbContext();
-        return await context.WeatherForecasts.ToListAsync();
+        WeatherForecasts =  await context.WeatherForecasts.ToListAsync();
     }
 
 
@@ -28,6 +30,5 @@ public class WeatherForecastService : IWeatherForecastService
         await context.WeatherForecasts.AddAsync(entity);
         return;
     }
-
 }
 

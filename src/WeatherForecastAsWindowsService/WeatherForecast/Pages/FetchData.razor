@@ -11,7 +11,7 @@
 <p>This component demonstrates fetching data from a service.</p>
 <p>Refresh page to list new records.</p>
 
-@if (forecasts == null)
+@if (ForecastService.WeatherForecasts?.Count == 0)
 {
     <p><em>Loading...</em></p>
 }
@@ -28,7 +28,7 @@ else
             </tr>
         </thead>
         <tbody>
-            @foreach (var forecast in forecasts)
+            @foreach (var forecast in ForecastService.WeatherForecasts)
             {
                 <tr>
                     <td>@forecast.Id</td>
@@ -43,10 +43,9 @@ else
 }
 
 @code {
-    private IEnumerable<WeatherForecast> forecasts = null;
 
     protected override async Task OnInitializedAsync()
     {
-        forecasts = await ForecastService.GetAllWeatherForecasts();
+        await ForecastService.GetAllWeatherForecasts();
     }
 }

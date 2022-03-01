@@ -4,7 +4,9 @@ using WeatherForecast.Entities;
 
 public interface IWeatherForecastService
 {
-    Task<IEnumerable<WeatherForecast>> GetAllWeatherForecasts();
+    List<WeatherForecast> WeatherForecasts { get; }
+
+    Task GetAllWeatherForecasts();
 
     Task InsertWeatherForecast(WeatherForecast entity);
 }
